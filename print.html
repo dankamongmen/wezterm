@@ -398,6 +398,7 @@ and the feature set may change, but since @wez uses this as a daily driver, its
 usually the best available version.</p>
 <p>As features stabilize some brief notes about them will accumulate here.</p>
 <ul>
+<li>Changed: new default key assignments: CTRL+PageUp and CTRL+Tab activate next tab, CTRL+PageDown and CTRL+SHIFT+Tab activate previous tab. ALT+{1..8} directly select the first through 8th tabs. Thanks to <a href="https://github.com/friederbluemle">@friederbluemle</a>! <a href="https://github.com/wez/wezterm/pull/1132">#1132</a></li>
 <li>Fixed: <code>wezterm cli spawn</code> would use the initial terminal size for a new tab, rather than using the current tab size <a href="https://github.com/wez/wezterm/issues/920">#920</a></li>
 <li>Fixed: <code>text_background_opacity</code> opacity was not respected</li>
 <li>Fixed: spawning commands via the mux didn't respect the <code>PATH</code> configured in <code>set_environment_variables</code>. <a href="https://github.com/wez/wezterm/issues/1029">#1029</a></li>
@@ -429,6 +430,8 @@ usually the best available version.</p>
 <li>Improved: multi-click-streaks are now interrupted by the cursor moving to a different cell. Thanks to <a href="https://github.com/unrelentingtech">@unrelentingtech</a>! <a href="https://github.com/wez/wezterm/issues/1126">#1126</a></li>
 <li>Fixed: Wayland: dragging the window using the tab bar now works. Thanks to <a href="https://github.com/unrelentingtech">@unrelentingtech</a>! <a href="https://github.com/wez/wezterm/issues/1127">#1127</a></li>
 <li>New: X11, macOS: Window resizing now prefers to step in increments of the cell size</li>
+<li>Fixed: error matching a font when that font is in a .ttc that contains multiple font families. <a href="https://github.com/wez/wezterm/issues/1137">#1137</a></li>
+<li>Improved: <code>.deb</code> packages now <code>Provides: x-terminal-emulator</code>. <a href="https://github.com/wez/wezterm/issues/1139">#1139</a></li>
 </ul>
 <h3 id="20210814-124438-54e29167"><a class="header" href="#20210814-124438-54e29167">20210814-124438-54e29167</a></h3>
 <ul>
@@ -1540,11 +1543,23 @@ the normal key processing.</p>
 <tr><td><code>CTRL+SHIFT</code></td><td><code>8</code></td><td><code>ActivateTab=7</code></td></tr>
 <tr><td><code>CTRL+SHIFT</code></td><td><code>9</code></td><td><code>ActivateTab=-1</code></td></tr>
 <tr><td><code>SUPER+SHIFT</code></td><td><code>[</code></td><td><code>ActivateTabRelative=-1</code></td></tr>
+<tr><td><code>CTRL+SHIFT</code></td><td><code>Tab</code></td><td><code>ActivateTabRelative=-1</code></td></tr>
+<tr><td><code>CTRL</code></td><td><code>PageUp</code></td><td><code>ActivateTabRelative=-1</code></td></tr>
 <tr><td><code>SUPER+SHIFT</code></td><td><code>]</code></td><td><code>ActivateTabRelative=1</code></td></tr>
+<tr><td><code>CTRL</code></td><td><code>Tab</code></td><td><code>ActivateTabRelative=1</code></td></tr>
+<tr><td><code>CTRL</code></td><td><code>PageDown</code></td><td><code>ActivateTabRelative=1</code></td></tr>
 <tr><td><code>CTRL+SHIFT</code></td><td><code>PageUp</code></td><td><code>MoveTabRelative=-1</code></td></tr>
 <tr><td><code>CTRL+SHIFT</code></td><td><code>PageDown</code></td><td><code>MoveTabRelative=1</code></td></tr>
 <tr><td><code>SHIFT</code></td><td><code>PageUp</code></td><td><code>ScrollByPage=-1</code></td></tr>
 <tr><td><code>SHIFT</code></td><td><code>PageDown</code></td><td><code>ScrollByPage=1</code></td></tr>
+<tr><td><code>ALT</code></td><td><code>1</code></td><td><code>ActivateTab=0</code></td></tr>
+<tr><td><code>ALT</code></td><td><code>2</code></td><td><code>ActivateTab=1</code></td></tr>
+<tr><td><code>ALT</code></td><td><code>3</code></td><td><code>ActivateTab=2</code></td></tr>
+<tr><td><code>ALT</code></td><td><code>4</code></td><td><code>ActivateTab=3</code></td></tr>
+<tr><td><code>ALT</code></td><td><code>5</code></td><td><code>ActivateTab=4</code></td></tr>
+<tr><td><code>ALT</code></td><td><code>6</code></td><td><code>ActivateTab=5</code></td></tr>
+<tr><td><code>ALT</code></td><td><code>7</code></td><td><code>ActivateTab=6</code></td></tr>
+<tr><td><code>ALT</code></td><td><code>8</code></td><td><code>ActivateTab=7</code></td></tr>
 <tr><td><code>ALT</code></td><td><code>9</code></td><td><code>ShowTabNavigator</code></td></tr>
 <tr><td><code>SUPER</code></td><td><code>r</code></td><td><code>ReloadConfiguration</code></td></tr>
 <tr><td><code>CTRL+SHIFT</code></td><td><code>R</code></td><td><code>ReloadConfiguration</code></td></tr>
